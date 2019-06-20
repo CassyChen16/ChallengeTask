@@ -13,7 +13,7 @@ Q2) The recommendation in the question is on the assumption that the user is a n
 
 --> “cityrecommend” module: ”city_recommend” function
 
-For fast recommendation, the similarity matrix can be first dumped to a pickle file. Next time, when recommendation is needed ,”city_recommend” function will load the similarity file for recommendation.
+For fast recommendation, the similarity matrix can be dumped to a pickle file. Next time, when recommendation is needed ,”city_recommend” function will be called for the the recommendation of 10 cities that the user will mostly like to search.
 
 Q3) The feature of users: user_id, joining_date, country is useful to predict most likely search cities. Once these information is available, it means that the website knows the user is a registered user and has his record history. It becomes a personalized recommendation problem which can be implemented based on Q2: 
 
