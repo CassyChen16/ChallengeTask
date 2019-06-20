@@ -1,5 +1,5 @@
 # ChallengeTask
-This repository is to solve a chanllenge.
+This repository is for solving a chanllenge.
 
 The explaination of my answer to each question is as follows:
 
