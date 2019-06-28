@@ -5,24 +5,8 @@ The explaination of my answer to each question is as follows:
 
 Q1)The missing country is most likely to be Canada. My hypothesis is based on the data analysis in “dataexploration.ipynb”.
 
-Q2) The recommendation in the question is on the assumption that the user is a new user (his previous search record is unknown). The implemented function  is non-personalized recommendation and it is based on the similarity between cities (item-item collaborative filtering recommendation). The main computation is the similarities. The related files are:
+Q2) The recommendation in the question is on the assumption that the user is a new user (his previous search record is unknown). The implemented function  is non-personalized recommendation as shown in “non_personalized_recommend” module, it recommend cities searched most or cities that related to searched cities in the session.
 
---> “dataloader” module
+Q3) The feature of users: user_id, joining_date, country is useful to predict most likely search cities. Once these information is available, it means that the website knows the user is a registered user and has his record history. It becomes a personalized recommendation problem  and implemented in “city_recommend” module. The intuition is item-item CF recommendation.
 
---> “modeltrain” module: “city_similarity_matrix” function
-
---> “cityrecommend” module: ”city_recommend” function
-
-For fast recommendation, the similarity matrix can be dumped to a pickle file. Next time, when recommendation is needed ,”city_recommend” function will be called for the the recommendation of 10 cities that the user will mostly like to search.
-
-Q3) The feature of users: user_id, joining_date, country is useful to predict most likely search cities. Once these information is available, it means that the website knows the user is a registered user and has his record history. It becomes a personalized recommendation problem which can be implemented based on Q2: 
-
---> Based on similarity matrix of cities, get the k-nearest neighbours of cities for this user’s history records (searched cities).
-
---> Calculate the most similar users to the current user by taking consider of the searched cites, joining year, joining month, joining date of month, and country (user features).
-
---> A combination function that is the weighted similarities from a closet subset of users and the k-neighbours of cities is used for scoring recommended cities.
-
---> Recommend cities based on scores.
-
-Q4) When training a recommendation model, the date set is split into train/test(8:2) set. For the training set, a k-fold(e.g. k=10) cross validate (train/validation set) is needed. For each iteration, the model and prediction is based on training set. The final recommendation is based on the average score of recommended cities. The accuracy is the average accuracy measured on the validation set. 
+Q4) For implicit recommendations,  20% of the user/item interaction in original data are masked as “0” (no interaction), it is taken as the training data. For the test data, each user contains at least one masked item. Calculate ROC, and AUC, get the average AUC.
